@@ -1,8 +1,10 @@
 import pandas as pd
+import numpy as np
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, classification_report
+from skl2onnx import to_onnx
 import pickle
 
 train = pd.read_csv('../data/churn_train.csv')
@@ -60,3 +62,10 @@ print('\nClassification Report:\n {}'.format(cr))
 
 with open('model.pkl', 'wb') as f:
     pickle.dump(model, f)
+
+X = pd.get_dummies(X)  # variáveis categóricas para numéricas
+X = X.astype(np.float32)
+X_np = X.to_numpy().astype(np.float32) 
+onx = to_onnx(model, X_np[:1], target_opset=12)
+with open("filename.onnx", "wb") as f:
+    f.write(onx.SerializeToString())
