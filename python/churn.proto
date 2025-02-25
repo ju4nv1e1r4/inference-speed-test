@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option go_package = "./churnpb";
+
+package churn;
+
+service Predict {
+  rpc PredictChurn (Features) returns (PredictResponse);
+}
+
+message Features {
+  string gender = 1;
+  string subscription_type = 2;
+  string contract_length = 3;
+}
+
+message PredictResponse {
+  int32 churn = 1;
+}
