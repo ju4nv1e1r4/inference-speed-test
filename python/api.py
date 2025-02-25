@@ -6,11 +6,14 @@ from schemas import (
     preprocess_input
 )
 
+# Inicializamos o app
 app = FastAPI(title='Predict Churn')
 
+# Carregamos o modelo
 with open('model.pkl', 'rb') as f:
     model = pickle.load(f)
 
+# Criamos um enpoint POST
 @app.post('/predict/', response_model=PredictResponse)
 def predict(features: Features):
     input_data = preprocess_input(features)
