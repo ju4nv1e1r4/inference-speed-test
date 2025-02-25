@@ -1,19 +1,19 @@
 syntax = "proto3";
 
-option go_package = "./churnpb";
+option go_package = "./churnpb"; // Aqui já específiquei o package no go
 
 package churn;
 
-service ChurnService {  // Alterado para ChurnService
-  rpc Predict (Features) returns (PredictResponse);  // Alterado para Predict
+service ChurnService {  // O serviço
+  rpc Predict (Features) returns (PredictResponse);
 }
 
-message Features {
+message Features { // A mensagem
   string gender = 1;
   string subscription_type = 2;
   string contract_length = 3;
 }
 
 message PredictResponse {
-  int32 churn = 1;
+  int32 churn = 1; // A resposta
 }
