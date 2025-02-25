@@ -1,4 +1,4 @@
-package main
+package models
 
 import (
 	"fmt"
@@ -8,7 +8,7 @@ import (
 	"github.com/sjwhitworth/golearn/evaluation"
 )
 
-func main()  {
+func RandomForestCls()  {
 	rawData, err := base.ParseCSVToInstances("../data/churn.csv", true)
 	if err != nil {
 		panic(err)
