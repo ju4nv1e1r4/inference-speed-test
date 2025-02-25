@@ -23,15 +23,15 @@ func main() {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
 
-	// Cria uma requisição com os dados
+	
 	req := &pb.Features{
 		Gender:           "Male",
 		SubscriptionType: "Premium",
 		ContractLength:   "Annual",
 	}
 
-	// Envia requisição ao servidor gRPC
-	resp, err := client.Predict(ctx, req) // Ajuste para Predict
+	
+	resp, err := client.Predict(ctx, req) //
 	if err != nil {
 		log.Fatalf("Erro ao chamar Predict: %v", err)
 	}
