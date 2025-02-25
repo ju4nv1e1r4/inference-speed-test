@@ -4,8 +4,8 @@ option go_package = "./churnpb";
 
 package churn;
 
-service Predict {
-  rpc PredictChurn (Features) returns (PredictResponse);
+service ChurnService {  // Alterado para ChurnService
+  rpc Predict (Features) returns (PredictResponse);  // Alterado para Predict
 }
 
 message Features {
